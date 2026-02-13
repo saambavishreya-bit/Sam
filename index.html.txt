@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+/* Falling Hearts */
+.heart {
+    position: fixed;
+    top: -10px;
+    color: rgba(255,255,255,0.8);
+    animation: fall linear forwards;
+    z-index: 0;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
+
+.page {
+    display: none;
+    padding: 50px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.active {
+    display: block;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+button {
+    padding: 15px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    margin: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.yesBtn {
+    background: white;
+    color: #ff4d6d;
+}
+
+.noBtn {
+    background: black;
+    color: white;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+ul {
+    text-align: left;
+    max-width: 400px;
+    margin: auto;
+    font-size: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+    <h1>Eruma Maadu 💖</h1>
+    <h2>Will you be my  Valentine? 🥺</h2>
+    <button class="yesBtn" onclick="showTerms()">Yes ❤️</button>
+    <button class="noBtn" id="noButton" onmouseover="changeToYes()">No 😜</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+    <h1>Terms & Conditions 📜</h1>
+    <p>Kindly agree to the following before continuing:</p>
+    <p>
+        ✔ Unlimited hugs 🤗<br>
+        ✔ Daily good morning & good night texts 🌙<br>
+        ✔ Random surprise chocolates 🍫<br>
+        ✔ Lifetime loyalty 💍<br>
+        ✔ Random kisses😌<br>
+        ✔ Lifetime support
+    </p>
+
+    <button class="yesBtn" onclick="showProsCons()">I Agree 💘</button>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page" id="page3">
+    <h1>Pros & Cons of Having ME 😌</h1>
+
+    <h2>Pros 😎</h2>
+    <ul>
+        <li>Very loyal & caring</li>
+        <li>Will always protect you</li>
+        <li>Free Entertainment</li>
+        <li>Will hype you up daily 🔥</li>
+        <li>Obsessed only with MY SWEET LITTLE BIG BUNNNN 💖</li>
+    </ul>
+
+    <h2>Cons 🤭</h2>
+    <ul>
+        <li>Will order desserts for YOU</li>
+        <li>Clingy AF</li>
+        <li>Steals your hoodies 😜</li>
+    </ul>
+
+    <button class="yesBtn" onclick="showLove()">Continue ❤️</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page" id="page4">
+    <h1 style="font-size:3em;">I LOVE YOU MAADU ❤️ Thank you for being you and Thank you for being mine</h1>
+    <h2>Forever Etta’s,<br>Lalu 💖</h2>
+</div>
+
+<script>
+function changeToYes() {
+    let btn = document.getElementById("noButton");
+    btn.innerHTML = "Yes ❤️";
+    btn.onclick = showTerms;
+}
+
+function showTerms() {
+    changePage("page2");
+}
+
+function showProsCons() {
+    changePage("page3");
+}
+
+function showLove() {
+    changePage("page4");
+}
+
+function changePage(pageId) {
+    let pages = document.getElementsByClassName("page");
+    for (let i = 0; i < pages.length; i++) {
+        pages[i].classList.remove("active");
+    }
+    document.getElementById(pageId).classList.add("active");
+}
+
+/* Falling Hearts Generator */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
